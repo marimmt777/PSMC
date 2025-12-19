@@ -8,9 +8,12 @@
    bcftools mpileup -C50 -Ou -f PITALB_final_invcorrected_chroms.fasta PITALB_final_invcorrected_chroms.fasta_PacBio.bam --threads 20 | bcftools call -c - > PITALB_final_invcorrected_PSMC.bcf
    ```
 5.  Saber cobertura
-_P. albiflos_:47.37x
-_P. staminea_:50.23x____
-7.  Transformar .bcf em .fasta
+
+_P. albiflos_:**47.37x**
+
+_P. staminea_:**50.23x**
+
+7.  Transformar .bcf em .fasta. Com dados de cobertura (muito importante para PSMC)
  
 _P. staminea_
 ```
@@ -24,3 +27,4 @@ bcftools consensus -f PITALB_final_invcorrected_chroms.fasta \
   -m <(bcftools view -i 'DP<16 || DP>95 || QUAL<30' PITALB_final_invcorrected_PSMC.bcf) \
   PITALB_final_invcorrected_PSMC.bcf > PITALB.psmc.fasta
 ```
+
