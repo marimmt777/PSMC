@@ -17,7 +17,7 @@ _P. staminea_
 bcftools consensus -f PITSTA_inv_final_chroms.fasta \
   -m <(bcftools view -i 'DP<17 || DP>100 || QUAL<30' PITSTA_inv_final_PSMC.bcf) \
   PITSTA_inv_final_PSMC.bcf > PITSTA.psmc.fasta
-```   
+   ```   
 _P. albiflos_   
    ```
 bcftools consensus -f PITALB_final_invcorrected_chroms.fasta \
