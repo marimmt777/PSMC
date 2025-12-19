@@ -13,14 +13,14 @@ _P. staminea_:50.23x____
 7.  Transformar .bcf em .fasta
  
 _P. staminea_
-    ```
+```
 bcftools consensus -f PITSTA_inv_final_chroms.fasta \
   -m <(bcftools view -i 'DP<17 || DP>100 || QUAL<30' PITSTA_inv_final_PSMC.bcf) \
   PITSTA_inv_final_PSMC.bcf > PITSTA.psmc.fasta
-   ```   
+```   
 _P. albiflos_   
-   ```
+```
 bcftools consensus -f PITALB_final_invcorrected_chroms.fasta \
   -m <(bcftools view -i 'DP<16 || DP>95 || QUAL<30' PITALB_final_invcorrected_PSMC.bcf) \
   PITALB_final_invcorrected_PSMC.bcf > PITALB.psmc.fasta
-   ```
+```
