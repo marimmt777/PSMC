@@ -3,9 +3,19 @@
 3. Rodar bcftools (VM unicamp)
    ```
    bcftools mpileup -C50 -Ou -f PITSTA_inv_final_chroms.fasta PITSTA_inv_final_chroms_PacBio.bam --threads 20 | bcftools call -c - > PITSTA_inv_final_PSMC.bcf
+
+   mv PITSTA_inv_final_PSMC.bcf PITSTA_inv_final_PSMC.vcf
+
+bcftools view -Ob PITSTA_inv_final_PSMC.vcf \
+  -o PITSTA_inv_final_PSMC.bcf
    ```
    ```
    bcftools mpileup -C50 -Ou -f PITALB_final_invcorrected_chroms.fasta PITALB_final_invcorrected_chroms.fasta_PacBio.bam --threads 20 | bcftools call -c - > PITALB_final_invcorrected_PSMC.bcf
+
+   mv PITALB_final_invcorrected_PSMC.bcf PITALB_final_invcorrected_PSMC.vcf
+
+bcftools view -Ob PITALB_final_invcorrected_PSMC.vcf \
+  -o PITALB_final_invcorrected_PSMC.bcf
    ```
 5.  Saber cobertura
 
