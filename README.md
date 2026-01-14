@@ -24,6 +24,7 @@ _P. staminea_:**50.23x**
 7. Indexar
 ```
 bcftools index
+```
 
 9. Transformar .bcf em .fasta. Com dados de cobertura (muito importante para PSMC)
  
