@@ -41,3 +41,42 @@ bcftools consensus -f PITALB_final_invcorrected_chroms.fasta \
   PITALB_final_invcorrected_PSMC.bcf > PITALB.psmc.fasta
 ```
 
+RODAR PSMC de fato
+```
+conda activate psmc
+```
+_P.albiflos_
+```
+fq2psmcfa -q20 PITALB.psmc.fasta > PITALB.psmcfa
+splitfa PITALB.psmcfa > split.PITALB.psmcfa
+psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITALB.psmc PITALB.psmcfa
+	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
+	    -o round-{}.psmc split.fa | sh
+    cat PITALB.psmc round-*.psmc > combined.PITALB.psmc
+psmc_plot.pl -pY50000 combined combined.PITALB.psmc
+```
+_P. staminea_
+```
+fq2psmcfa -q20 PITSTA.psmc.fasta > PITSTA.psmcfa
+splitfa PITSTA.psmcfa > split.PITSTA.psmcfa
+psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITSTA.psmc PITSTA.psmcfa
+	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
+	    -o round-{}.psmc split.fa | sh
+    cat PITSTA.psmc round-*.psmc > combined.PITSTA.psmc
+psmc_plot.pl -pY50000 combined combined.PITSTA.psmc
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
