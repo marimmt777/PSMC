@@ -47,12 +47,12 @@ psmc_plot.pl -pY50000 combined combined.PITALB.psmc
 ```
 _P. staminea_
 ```
-fq2psmcfa -q20 PITSTA2.psmc.fasta > PITSTA2.psmcfa
-splitfa PITSTA2.psmcfa > split.PITSTA2.psmcfa
-psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITSTA2.psmc PITSTA2.psmcfa
+fq2psmcfa -q20 PITSTA.psmc.fasta > PITSTA.psmcfa
+splitfa PITSTA.psmcfa > split.PITSTA.psmcfa
+psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITSTA.psmc PITSTA.psmcfa
 	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
-	    -o round-{}2.psmc split.fa | sh
-    cat PITSTA2.psmc round-*2.psmc > combined.PITSTA2.psmc
+	    -o round-{}.psmc split.fa | sh
+    cat PITSTA2.psmc round-*.psmc > combined.PITSTA.psmc
 psmc_plot.pl -pY50000 combined combined.PITSTA.psmc
 ```
 
