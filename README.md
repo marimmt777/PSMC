@@ -2,10 +2,10 @@
 2. Rodar minimap: run_minimap.sh
 3. Rodar bcftools (VM unicamp)
    ```
-   bcftools mpileup -C50 -Ou -f PITSTA_inv_final_chroms.fasta PITSTA_inv_final_chroms_PacBio.bam --threads 20 | bcftools call -c > PITSTA_inv_final_PSMC.bcf
+   bcftools mpileup -C50 -Ou -f PITSTA_inv_final_chroms.fasta PITSTA_inv_final_chroms_PacBio.bam --threads 20 | bcftools call -c -Ob -o PITSTA_inv_final_PSMC.bcf
    ```
    ```
-   bcftools mpileup -C50 -Ou -f PITALB_final_invcorrected_chroms.fasta PITALB_final_invcorrected_chroms.fasta_PacBio.bam --threads 20 | bcftools call -c > PITALB_final_invcorrected_PSMC.bcf
+   bcftools mpileup -C50 -Ou -f PITALB_final_invcorrected_chroms.fasta PITALB_final_invcorrected_chroms.fasta_PacBio.bam --threads 20 | bcftools call -c -Ob -o PITALB_final_invcorrected_PSMC.bcf
    ```
 5.  Saber cobertura
 
