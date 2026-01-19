@@ -15,23 +15,21 @@ _P. staminea_:**50.23x**
 
 7. Indexar
 ```
-bcftools index
+bcftools index *.bcf
 ```
 
 9. Transformar .bcf em .fasta. Com dados de cobertura (muito importante para PSMC)
  
 _P. staminea_
 ```
-bcftools consensus -f PITSTA_inv_final_chroms.fasta -H IUPAC -m <(bcftools view -i 'DP<17 || DP>100 || QUAL<30' PITSTA_inv_final_PSMC.bcf) PITSTA_inv_final_PSMC.bcf > PITSTA.psmc.fasta
+bcftools consensus -f PITSTA_inv_final_chroms.fasta -m <(bcftools view -i 'DP<17 || DP>100 || QUAL<30' PITSTA_inv_final_PSMC.bcf) PITSTA_inv_final_PSMC.bcf > PITSTA.psmc.fasta
 ```   
 _P. albiflos_   
 ```
-bcftools consensus -f PITALB_final_invcorrected_chroms.fasta \
-  -m <(bcftools view -i 'DP<16 || DP>95 || QUAL<30' PITALB_final_invcorrected_PSMC.bcf) \
-  PITALB_final_invcorrected_PSMC.bcf > PITALB.psmc.fasta
+bcftools consensus -f PITALB_final_invcorrected_chroms.fasta -m <(bcftools view -i 'DP<16 || DP>95 || QUAL<30' PITALB_final_invcorrected_PSMC.bcf) PITALB_final_invcorrected_PSMC.bcf > PITALB.psmc.fasta
 ```
 
-RODAR PSMC de fato
+10. RODAR PSMC de fato
 ```
 conda activate psmc
 ```
@@ -41,7 +39,7 @@ fq2psmcfa -q20 PITALB.psmc.fasta > PITALB.psmcfa
 splitfa PITALB.psmcfa > split.PITALB.psmcfa
 psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITALB.psmc PITALB.psmcfa
 	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
-	    -o round-{}.psmc split.fa | sh
+	    -o round-{}.psmc split.PITALB.psmcfa | sh
     cat PITALB.psmc round-*.psmc > combined.PITALB.psmc
 psmc_plot.pl -pY50000 combined combined.PITALB.psmc
 ```
