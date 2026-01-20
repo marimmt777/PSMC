@@ -51,7 +51,7 @@ psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITSTA.psmc PITSTA.psmcfa
 	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
 	    -o round-{}.psmc split.fa | sh
     cat PITSTA2.psmc round-*.psmc > combined.PITSTA.psmc
-psmc_plot.pl -pY50000 combined combined.PITSTA.psmc
+psmc_plot.pl -u 3e-9 -g 5 -R -pY50000 combined combined.PITSTA.psmc
 ```
 
 
