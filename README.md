@@ -23,6 +23,8 @@ bcftools index *.bcf
 _P. staminea_
 ```
 bcftools consensus -f PITSTA_inv_final_chroms.fasta -m <(bcftools view -i 'DP<17 || DP>100 || QUAL<30' PITSTA_inv_final_PSMC.bcf) PITSTA_inv_final_PSMC.bcf > PITSTA.psmc.fasta
+
+bcftools consensus -f PITSTA_inv_final_chroms.fasta -m <(bcftools view -i 'DP<16 || DP>95 || QUAL<30' PITSTA_inv_final_PSMC.bcf) PITSTA_inv_final_PSMC.bcf > PITSTA1.psmc.fasta
 ```   
 _P. albiflos_   
 ```
@@ -41,16 +43,16 @@ psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITALB.psmc PITALB.psmcfa
 	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
 	    -o round-{}.psmc split.PITALB.psmcfa | sh
     cat PITALB.psmc round-*.psmc > combined.PITALB.psmc
-psmc_plot.pl -pY50000 combined combined.PITALB.psmc
+psmc_plot.pl -u 3e-9 -g 5 -R -p combined combined.PITALB.psmc
 ```
 _P. staminea_
 ```
 fq2psmcfa -q20 PITSTA.psmc.fasta > PITSTA.psmcfa
 splitfa PITSTA.psmcfa > split.PITSTA.psmcfa
-psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o PITSTA.psmc PITSTA.psmcfa
+psmc -N25 -t15 -r5 -p "20+10" -o PITSTA.psmc PITSTA.psmcfa
 	seq 100 | xargs -i echo psmc -N25 -t15 -r5 -b -p "4+25*2+4+6" \
 	    -o round-{}.psmc split.fa | sh
-    cat PITSTA2.psmc round-*.psmc > combined.PITSTA.psmc
+    cat PITSTA.psmc round-*.psmc > combined.PITSTA.psmc
 psmc_plot.pl -u 3e-9 -g 5 -R -pY50000 combined combined.PITSTA.psmc
 ```
 
